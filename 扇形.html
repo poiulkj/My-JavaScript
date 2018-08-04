@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+     canvas{background:#A9A9A0} 
+	</style>
+</head>
+<body>
+	<canvas id="mycanvas" width="500" height="500">
+      不支持canvas
+    </canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById('mycanvas');
+        var content=canvas.getContext('2d');
+        content.lineWidth=2;
+        content.strokeStyle="#A9A9A0"
+content.fillStyle="blue";
+content.moveTo(300,300);
+content.arc(300,300,200,Math.PI*7/6,Math.PI*3/2,false); 
+content.fill();
+content.beginPath();
+content.moveTo(300,300);
+content.arc(300,300,200,Math.PI*11/6,Math.PI*3/2,true); 
+content.fill();
+content.beginPath();
+content.fillStyle="#A9A9A0"
+content.moveTo(300,300);
+content.arc(300,300,100,Math.PI*7/6,Math.PI*3/2,false); 
+content.fill();
+content.beginPath();
+content.moveTo(300,300);
+content.arc(300,300,100,Math.PI*11/6,Math.PI*3/2,true); 
+content.fill();
+    </script>
+</body>
+</html>
