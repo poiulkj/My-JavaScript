@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="大" onclick="sizefont('24px')">
+	<input type="button" value="中" onclick="sizefont('18px')">
+	<input type="button" value="小" onclick="sizefont('12px')">
+	<div id="content">
+       <p>测试文本</p>
+	</div>
+	<script type="text/javascript">
+        function sizefont(size){
+        	var content=document.getElementById('content');
+            content.style.fontSize=size;
+        }
+	</script>
+</body>
+</html>
