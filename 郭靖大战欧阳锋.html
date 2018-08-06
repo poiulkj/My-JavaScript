@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+      var guojing=new Object();
+    guojing.name="郭靖";
+    guojing.HP=600;
+    guojing.gj=90;
+    guojing.sd=60;
+    guojing.skill=new Array('亢龙有悔','飞龙在天','见龙在田');
+var ouyang=new Object();
+    ouyang.name="欧阳锋";
+    ouyang.HP=800;
+    ouyang.gj=100;
+    ouyang.sd=40;
+    ouyang.skill=new Array('灵蛇棍法','凤凰神力','逆转经脉');
+function pker(a,b){
+    return a.sd*Math.random()>b.sd*Math.random()?[a,b]:[b,a]
+}
+
+function game(){
+	var skillIndex=Math.floor(Math.random()*3);
+	var fight=pker(guojing,ouyang);
+	var attacker=fight[0];
+	var defender=fight[1];
+	var damage=attacker.gj*Math.random()-defender.gj*Math.random();
+	if(damage<=0){
+		damage=0;
+	}else{
+		damage=Math.ceil(damage);
+	}
+	defender.HP-=damage;
+	document.write(attacker.name+'使用了一招'+attacker.skill[skillIndex]+'</br>');
+	document.write(defender.name+'损失了'+damage+'点HP'+'</br>');
+	if(defender.HP>0){
+        document.write(defender.name+'的HP：'+defender.HP+'</br>'+attacker.name+'的HP：'+attacker.HP+'<hr>');
+	}else{
+		document.write(attacker.name+'胜利'+'</br>'+defender.name+'战败'+'</br>');
+		alert(attacker.name+'胜利'+' '+'GAME OVER!');
+		clearInterval(zd);
+	}
+}
+var zd=setInterval('game()',100);
+
+	</script>
+</body>
+</html>
