@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+      <label for="radius">半径：</label>
+      <input type="text" id="radius"><br>
+      <label for="area">面积：</label>
+      <input type="text" id="area"><br>
+      <input type="button" id="js" value="计算" onclick="show()">
+      <input type="button" id="qk" value="清空" onclick="cl()">
+	</div>
+	<script type="text/javascript">
+	   function carea(r){
+         var s=Math.PI*r*r;
+         return s;
+	   }	  
+       function show(){
+         var radius=document.getElementById('radius').value;
+         var area=carea(radius);
+         document.getElementById('area').value=area;
+       }
+       function cl(){
+       	 document.getElementById('radius').value='';
+       	 document.getElementById('area').value='';
+       }
+	</script>
+</body>
+</html>
