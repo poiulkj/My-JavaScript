@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="number" id="point" placeholder="请输入积分">
+	<input type="button" value="会员等级查询" onclick="checkpoints()">
+	<script type="text/javascript">
+       function check(point){
+         var res='';
+         var level=0;
+         if(point>=900){
+         	level=1;
+         }else if(point<900 && point>=600){
+         	level=2;
+         }else if(point<600 && point>=400){
+            level=3;
+         }else if(point<400 && point>=200){
+         	level=4;
+         }else{
+         	level=5;
+         }
+         switch(level){
+         	case 1:res='黄金会员';break;
+         	case 2:res='专家会员';break;
+         	case 3:res='资深会员';break;
+         	case 4:res='普通会员';break;
+         	case 5:res='新手会员';break;
+         }
+         return res;
+       }
+       function checkpoints(){
+       	 var x=document.getElementById('point').value;      	 
+       	 var str='';
+       	 if(x>=0){
+       	 	str=check(x);
+       	 	alert('您的会员等级为：'+str);
+       	 }else{
+       	 	alert('请重新输入积分');
+       	 }
+       }
+	</script>
+</body>
+</html>
