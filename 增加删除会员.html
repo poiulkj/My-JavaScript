@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>会员ID：<input type="text" id="vipid"></p>
+	<p>会员姓名：<input type="text" id="vipname"></p>
+	<p>
+      <input type="button" value="添加" onclick="addvip()">
+      <input type="button" value="删除" onclick="deletevip()">
+	</p>
+	<ul id="vipul">
+	</ul>
+	<script type="text/javascript">
+      function addvip(){
+      	var vipid=document.getElementById('vipid').value;     	
+      	var vipname=document.getElementById('vipname').value;      	
+        var vipul=document.getElementById('vipul');
+        var vipli=document.createElement('li');        
+        if(vipid!='' && vipname!=''){
+        	vipli.innerHTML='会员ID：'+vipid+'<br>'+'会员姓名：'+vipname;       	
+        	vipul.appendChild(vipli);
+        }else{
+        	alert('会员ID和姓名不能为空');
+        }
+      }
+     function deletevip(){
+     	var vipul=document.getElementById('vipul');
+        var vipid=document.getElementById('vipid').value;
+     	var liarr=document.getElementsByTagName('li');
+     	for(var i=0;i<liarr.length;i++){
+     		var vip=liarr[i].innerHTML;
+     		if(vip.indexOf(vipid)!=-1){
+     			vipul.removeChild(liarr[i]);
+     		}
+     	}
+     } 
+	</script>
+</body>
+</html>
