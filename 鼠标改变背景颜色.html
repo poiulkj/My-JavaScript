@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+       #div1{
+       	margin: 15px auto;
+       	background: aqua;
+       	width: 200px;
+       	height: 200px;
+       	border-radius: 200px;
+       }
+       #div2{
+       	margin: 15px auto;
+       	background: silver;
+       	width: 200px;
+       	height: 200px;
+       	border-radius: 200px;
+       }
+	</style>
+</head>
+<body>
+	<div id="div1">
+       <script type="text/javascript">
+       var div1=document.getElementById('div1');
+       div1.onclick=fun1;
+       function fun1(){
+       	div1.style.background='fuchsia';
+       	div1.onclick=fun2;
+       }
+       function fun2(){
+       	div1.style.background='teal';
+       	div1.onclick=fun3;
+       }
+       function fun3(){
+       	div1.style.background='aqua';
+       	div1.onclick=fun1;
+       }
+	</script>
+	</div>
+	<div id="div2">
+       <script type="text/javascript">
+        var div2=document.getElementById('div2');
+        div2.onclick=mun1;
+        function mun1(){
+          div2.style.background='yellow';
+          setTimeout('mun2()',500);
+        }
+        function mun2(){
+        	div2.style.background='lime';
+        	setTimeout('mun3()',500);
+        }
+        function mun3(){
+        	div2.style.background='silver';
+        	setTimeout('mun1()',500);
+        }
+       </script>
+	</div>
+</body>
+</html>
