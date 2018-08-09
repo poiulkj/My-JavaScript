@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+       div{
+       	background: #00ffff;
+       	width:100px;
+       	height: 100px;
+       	padding: 30px;
+       	border-radius: 100px;
+       	position: absolute;
+       	background-image:url(img/4.jpg);
+       	background-size: cover;
+       }
+	</style>
+</head>
+<body>
+	<div id="ball" style="top:100px;left:100px"></div>
+	<script type="text/javascript">
+       // var key{
+       // 	W:87,
+       // 	S:83,
+       // 	A:65,
+       // 	D:68
+       // }
+       function keymove(e){
+         var ball=document.getElementById('ball');
+         var top=parseInt(ball.style.top);               
+         var left=parseInt(ball.style.left);        
+         switch(e.keyCode){
+         	case 87:
+         	ball.style.top=top-20+'px';        	
+         	break;
+         	case 83:
+         	ball.style.top=top+20+'px';
+         	break;
+         	case 65:
+         	ball.style.left=left-20+'px';
+         	break;
+         	case 68:
+         	ball.style.left=left+20+'px';
+         	break;
+         }
+       }
+       document.onkeydown=keymove;
+	</script>
+</body>
+</html>
