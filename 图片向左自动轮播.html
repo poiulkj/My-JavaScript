@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style type="text/css">
+	    *{ margin: 0; padding: 0; text-decoration: none;}
+        body { padding: 20px;}
+        #container { width: 200px; height: 200px; overflow: hidden; position: relative;}
+        #list { width: 1200px; height: 200px; position: absolute; z-index: 1;}
+        #list img { float: left;}
+        #buttons { position: absolute; height: 10px; width: 100px; z-index: 2; bottom: 3px; left: 80px;}
+        #buttons span { cursor: pointer; float: left; width: 10px; height: 10px; border-radius: 50%; background: #333; margin-right: 5px;}
+        #buttons .on {  background-color: aquamarine;}
+        .arrow { cursor: pointer; display: none; line-height: 20px; text-align: center; font-size: 15px; font-weight: bold; width: 20px; height: 20px;  position: absolute; z-index: 2; top: 90px; background-color: RGBA(0,0,0,.3); color: #fff;}
+        .arrow:hover { background-color: RGBA(0,0,0,.7);}
+        #container:hover .arrow { display: block;}
+        #prev { left: 10px;}
+        #next { right: 10px;}
+		</style>
+		 <script type="text/javascript">
+        	window.onload=function(){
+        		var container=document.getElementById('container');
+        		var list=document.getElementById('list');
+        		var buttons=document.getElementById('buttons').getElementsByTagName('span');
+        		var prev=document.getElementById('prev');
+        		var next=document.getElementById('next');
+        		next.onclick=function(){	
+        		list.style.left=parseInt(list.style.left)-200+'px';
+        		}   
+        		prev.onclick=function(){
+        		list.style.left=parseInt(list.style.left)+200+'px';
+        		}
+        	}
+        </script>
+	</head>
+	<body>
+		<div id="container">
+		<div id="list" style="left: -200px;">
+			<img src="img/4.jpg" width="200" height="200">
+			<img src="img/1.jpg" width="200" height="200">
+			<img src="img/2.jpg" width="200" height="200">
+			<img src="img/3.jpg" width="200" height="200">
+			<img src="img/4.jpg" width="200" height="200">
+			<img src="img/1.jpg" width="200" height="200">
+		</div>
+		<div id="buttons">
+			<span index="1" class="on"></span>
+			<span index="2"></span>
+			<span index="3"></span>
+			<span index="4"></span>
+		</div>
+		<a href="javascript:;"class="arrow" id="prev"><</a>
+		<a href="javascript:;"class="arrow" id="next">></a>
+	</div>
+       <script type="text/javascript">
+		window.onload=function(){
+        		var container=document.getElementById('container');
+        		var list=document.getElementById('list');
+        		var buttons=document.getElementById('buttons').getElementsByTagName('span');
+        		var prev=document.getElementById('prev');
+        		var next=document.getElementById('next');
+        		var index=1;
+        		var timer;
+        		function newbutton(){
+        			for(var i=0;i<buttons.length;i++){
+        				if(buttons[i].className=='on'){
+        				buttons[i].className=' ';
+        				break;
+        			  }       			
+        			} 
+        			buttons[index-1].className='on';
+        		}
+        		function animate(set){
+        			var newleft=parseInt(list.style.left)+set;
+        			var go = function (){
+        				var time=300;
+        			    var inter=10;
+        			    var speed=set/(time/inter);
+        			    if ( (speed > 0 && parseInt(list.style.left) < newleft) || (speed < 0 && parseInt(list.style.left) > newleft)) {
+                        list.style.left = parseInt(list.style.left) + speed + 'px';
+                        setTimeout(go, inter);
+                    }else{
+                    	list.style.left=newleft+'px';
+        			    if(newleft<-1000){
+        				list.style.left=-400+'px';
+        			}
+        			    if(newleft>0){
+        				list.style.left=-600+'px';
+        			}
+        			}
+        			} 
+        			go();
+        		}
+        		function play(){
+        			timer=setInterval(function(){
+        				next.onclick();
+        			},2000);
+        		}
+        		play();
+        		function stop(){
+        			clearInterval(timer);
+        		}
+		        next.onclick=function(){
+		        	if(index==4){
+		        		index=1;		        		
+		        	}else{index+=1;}	        	
+		        	newbutton()
+        		    animate(-200);       		     
+        		}
+		        prev.onclick=function(){
+		        	if(index==1){
+		        		index=4;		        		
+		        	}else{index-=1;}		        	
+		        	newbutton()
+        		    animate(200);
+        		}	
+        		container.onmousemove=stop;
+        		container.onmouseout=play;
+       }
+	</script>
+	</body>
+</html>
